@@ -57,7 +57,7 @@ def run(hidden_dim, dropout, batch_size):
     in_dat = torch.FloatTensor(in_dat)
     out_dat = torch.FloatTensor(out_dat)
 
-    torch_dataset = Data.TensorDataset(data_tensor=in_dat,target_tensor=out_dat)
+    torch_dataset = Data.TensorDataset(in_dat, out_dat)
     loader = Data.DataLoader(
         dataset=torch_dataset,
         batch_size=BATCH_SIZE,

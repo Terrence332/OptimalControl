@@ -11,7 +11,7 @@ import datetime
 train_time = None
 final_loss = None
 INPUT_SIZE = 1
-HIDDEN_DIM = 10
+HIDDEN_DIM = 20
 BATCH_SIZE = 50
 DROUPOUT = 0.1
 TIME_STEP = 10
@@ -97,7 +97,8 @@ loss_function = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 loss = None
 loss_seq = []
-for epoch in range(200):
+time1 = datetime.datetime.now()
+for epoch in range(100):
     print('epoch:',epoch,'|')
     for step,(batch_x,batch_y) in enumerate(loader):
         train_x = Variable(batch_x)
@@ -115,10 +116,12 @@ for epoch in range(200):
             optimizer.step()
         else:
             pass
-    endTime = datetime.datetime.now()
     print(loss)
     loss_seq.append(loss.data.numpy())
     final_loss = loss
+time2 = datetime.datetime.now()
+time = time2-time1
+print(time)
 
 
 test_data = testDatGen(test_data,10)
